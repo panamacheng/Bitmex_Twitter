@@ -1,0 +1,38 @@
+{
+  "name": "bitmex_twitter",
+  "version": "0.1.0",
+  "description": "Twitter automation bot using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panamacheng/Bitmex_Twitter.git"
+  },
+  "keywords": [
+    "node.js",
+    "twitter",
+    "api",
+    "git",
+    "bitmex",
+    "blockchain"
+  ],
+  "author": "Panamacheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/panamacheng/Bitmex_Twitter/issues"
+  },
+  "homepage": "https://github.com/panamacheng/Bitmex_Twitter#readme",
+  "dependencies": {
+    "bitmex-realtime-api": "^0.4.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "twitter": "^1.7.1"
+  }
+}
