@@ -17,16 +17,12 @@ function addRow(data, cb) {
                     if(err) {
                         console.log(err);
                     }
-
-                    cb(result);
                 });
             } else {
-                doc.addRow(1, data, function(err, result) {
+                doc.addRow(1, data, function(err) {
                     if(err) {
                         console.log(err);
                     }
-
-                    cb(result);
                 });
             }
         });

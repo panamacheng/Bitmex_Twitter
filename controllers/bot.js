@@ -52,13 +52,8 @@ var botCtrl = {
         });
 
         setInterval(() => {
-            console.log(initialData);
-            docService.addRow(initialData, cb => {
-
-            });
-        }, 30000);
-
-        
+            docService.addRow(initialData);
+        }, 60000);
     }
 }
 
