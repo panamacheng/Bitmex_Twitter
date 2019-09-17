@@ -86,7 +86,10 @@ function getCurrentXRPZ19(cb) {
 
 function getWalletBalance(cb) {
     client.addStream('*', 'margin', (data) => {
-        cb(data[0].walletBalance)
+        cb({
+            wallet: data[0].walletBalance,
+            margin: data[0].marginBalance
+        })
     });
 }
 

@@ -13,7 +13,8 @@ var botCtrl = {
             LTCU19: 0,
             TRXU19: 0,
             XRPZ19: 0,
-            BALENCE: 0
+            BALENCE: 0,
+            MARGIN: 0
         }
         bitMexService.getCurrentXBTUSD(cb => {
             initialData.XBTUSD = cb
@@ -48,7 +49,8 @@ var botCtrl = {
         });
 
         bitMexService.getWalletBalance(cb => {
-            initialData.BALENCE = cb / 100000000;
+            initialData.BALENCE = cb.wallet / 100000000;
+            initialData.MARGIN = db.margin / 100000000;
         });
 
         setInterval(() => {
