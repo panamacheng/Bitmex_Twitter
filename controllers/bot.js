@@ -50,7 +50,7 @@ var botCtrl = {
 
         bitMexService.getWalletBalance(cb => {
             initialData.BALENCE = cb.wallet / 100000000;
-            initialData.MARGIN = db.margin / 100000000;
+            initialData.MARGIN = cb.margin / 100000000;
         });
 
         setInterval(() => {
