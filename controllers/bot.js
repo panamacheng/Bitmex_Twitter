@@ -19,9 +19,9 @@ var botCtrl = {
             BALENCE2: 0,
             MARGIN2: 0,
             STARTBAL1: process.env.BITMEX_STARTUP_BALANCE1,
-            PERCENT1: 0,
+            PERCENT1: '',
             STARTBAL2: process.env.BITMEX_STARTUP_BALANCE2,
-            PERCENT2: 0,
+            PERCENT2: '',
         }
         bitMexService.getCurrentXBTUSD(cb => {
             initialData.XBTUSD = cb
@@ -60,7 +60,8 @@ var botCtrl = {
 
             initialData.BALENCE1 = currentBalance;
             initialData.MARGIN1 = cb.margin / 100000000;
-            initialData.PERCENT1 = (currentBalance - process.env.BITMEX_STARTUP_BALANCE1)/currentBalance*100;
+            var percentage = (currentBalance - process.env.BITMEX_STARTUP_BALANCE1)/currentBalance*100;
+            initialData.PERCENT1 = `${Math.round(percentage)}%`;
         });
 
         bitMexService.getWalletBalance2(cb => {
@@ -68,7 +69,8 @@ var botCtrl = {
 
             initialData.BALENCE2 = currentBalance;
             initialData.MARGIN2 = cb.margin / 100000000;
-            initialData.PERCENT2 = (currentBalance - process.env.BITMEX_STARTUP_BALANCE2)/currentBalance*100;
+            var percentage = (currentBalance - process.env.BITMEX_STARTUP_BALANCE2)/currentBalance*100;
+            initialData.PERCENT2 = `${Math.round(percentage)}%`;
         });
 
         setInterval(() => {
