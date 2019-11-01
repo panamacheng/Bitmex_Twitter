@@ -1,3 +1,4 @@
+require('dotenv').config;
 var bitMexService = require('../services/bitmex');
 var twitterService = require('../services/twitter');
 var docService = require('../services/spreadsheet');
@@ -17,6 +18,10 @@ var botCtrl = {
             MARGIN1: 0,
             BALENCE2: 0,
             MARGIN2: 0,
+            STARTBAL1: process.env.BITMEX_STARTUP_BALANCE1,
+            PERCENT1: 0,
+            STARTBAL2: process.env.BITMEX_STARTUP_BALANCE2,
+            PERCENT2: 0,
         }
         bitMexService.getCurrentXBTUSD(cb => {
             initialData.XBTUSD = cb
@@ -51,13 +56,19 @@ var botCtrl = {
         });
 
         bitMexService.getWalletBalance1(cb => {
-            initialData.BALENCE1 = cb.wallet / 100000000;
+            var currentBalance = cb.wallet / 100000000;
+
+            initialData.BALENCE1 = currentBalance;
             initialData.MARGIN1 = cb.margin / 100000000;
+            initialData.PERCENT1 = (currentBalance - process.env.BITMEX_STARTUP_BALANCE1)/currentBalance*100;
         });
 
         bitMexService.getWalletBalance2(cb => {
-            initialData.BALENCE2 = cb.wallet / 100000000;
+            var currentBalance = cb.wallet / 100000000;
+
+            initialData.BALENCE2 = currentBalance;
             initialData.MARGIN2 = cb.margin / 100000000;
+            initialData.PERCENT2 = (currentBalance - process.env.BITMEX_STARTUP_BALANCE2)/currentBalance*100;
         });
 
         setInterval(() => {
